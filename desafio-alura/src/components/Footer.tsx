@@ -1,10 +1,11 @@
 import { MailIcon } from "@/icons/MailIcon";
 import { Text } from "./Text";
 import Link from "next/link";
+import { Copyright } from "./Copyright";
 
 export function Footer() {
   return (
-    <footer className="border-t border-gray-200 bg-white mt-auto">
+    <footer >
       <div className="mx-auto max-w-7xl px-4 py-12 md:px-8">
         <div className="flex flex-col items-start justify-between gap-10 md:flex-row md:gap-4">
           <div className="flex flex-col gap-2">
@@ -14,10 +15,11 @@ export function Footer() {
             <Text
               as="h2"
               family="chakra"
-              size="6xl"
+              size="xl"
               weight="bold"
               color="default"
-              className="text-2xl md:text-6xl"
+              className="text-xl md:text-6xl"
+              leading="none"
             >
               Entre em contato
             </Text>
@@ -58,11 +60,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 text-center">
-          <Text color="muted" className="text-sm">
-            © Copyright 2025. Produzido por Fernanda Mascheti
-          </Text>
-        </div>
+        <Copyright/>
       </div>
     </footer>
   );

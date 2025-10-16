@@ -20,7 +20,7 @@ export function Header() {
   }, [isMenuOpen]);
 
   return (
-    <header className="fixed top-0 left-0 z-20 flex w-full items-center justify-between bg-white px-4 py-4 shadow-sm sm:px-8 md:px-12 lg:px-[82px]">
+    <header className="fixed top-0 left-0 z-20 flex w-full items-center justify-between bg-white px-4 py-4  sm:px-8 md:px-12 lg:px-[82px]">
       <Link href="/" className="z-20 flex items-center gap-5">
         <div className="size-8 md:size-12">
           <Code />

@@ -3,7 +3,7 @@ import { Text } from "./Text";
 
 export function Author() {
   return (
-    <div className="flex flex-col gap-6 max-w-[675px] mx-4 md:pb-28">
+    <div className="flex flex-col gap-6 max-w-[675px] mt-4 mx-4 md:pb-28">
       <Avatar />
       <div>
         <Text family="chakra" weight="bold" className="text-xl md:text-6xl mx-auto w-fit">
