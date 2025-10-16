@@ -16,7 +16,7 @@ export function PostCard({ post }: PostCardProps) {
         hover:shadow-[0px_4px_44px_0px_#1CA7C84D]
       "
     >
-      <div className="relative h-[196px] w-full overflow-hidden rounded-[4px]">
+      <div className="relative h-[196px] w-full rounded-[4px]">
         <Image
           src={post.imageUrl}
           alt={`Capa do post: ${post.title}`}

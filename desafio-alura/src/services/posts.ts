@@ -5,6 +5,7 @@ interface GetPostsParams {
   query?: string;
   category?: string;
   page?: number;
+  limit?: number;
 }
 
 export async function getAllPosts({
@@ -63,5 +64,23 @@ export async function getAllCategories(): Promise<Category[]> {
   } catch (error) {
     console.error("Erro na busca de categorias:", error);
     return [];
+  }
+}
+
+export async function getPostById(id: string): Promise<Post | null> {
+  try {
+    const response = await fetch(`${API_URL}/posts/id/${id}`, {
+      next: { revalidate: 3600 },
+    });
+
+    if (!response.ok) {
+      return null;
+    }
+
+    const data = await response.json();
+    return data.post;
+  } catch (error) {
+    console.error(`Erro na busca do post com ID ${id}:`, error);
+    return null;
   }
 }

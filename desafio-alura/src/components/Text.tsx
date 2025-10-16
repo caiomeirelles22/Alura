@@ -6,6 +6,7 @@ export interface TextProps {
   weight?: 'normal' | 'bold'
   color?: 'default' | 'muted' | 'primary' | 'white'
   align?: 'left' | 'center'
+  leading?: 'normal' | 'tight' | 'none'
   as?: React.ElementType
   className?: string
   children: React.ReactNode
@@ -18,6 +19,7 @@ function TextComponent(
     weight = 'normal',
     color = 'default',
     align = 'left',
+    leading = 'normal',
     as: Component = 'p',
     className,
     children,
@@ -31,10 +33,16 @@ function TextComponent(
   }
 
   const sizeStyles = {
-    base: 'text-base leading-normal',
-    xl: 'text-xl leading-tight',
-    '2xl': 'text-2xl leading-tight',
-    '6xl': 'text-6xl leading-tight',
+    base: 'text-base',
+    xl: 'text-xl',
+    '2xl': 'text-2xl',
+    '6xl': 'text-6xl',
+  }
+
+  const leadingStyles = {
+    normal: 'leading-normal',
+    tight: 'leading-tight',
+    none: 'leading-none'
   }
 
   const weightStyles = {
@@ -54,7 +62,7 @@ function TextComponent(
     center: 'text-center',
   }
 
-  const textClasses = `${familyStyles[family]} ${sizeStyles[size]} ${weightStyles[weight]} ${colorStyles[color]} ${alignStyles[align]} ${className || ''}`
+  const textClasses = `${familyStyles[family]} ${sizeStyles[size]} ${leadingStyles[leading]} ${weightStyles[weight]} ${colorStyles[color]} ${alignStyles[align]} ${className || ''}`
 
   return (
     <Component className={textClasses.trim()} ref={ref} {...props}>

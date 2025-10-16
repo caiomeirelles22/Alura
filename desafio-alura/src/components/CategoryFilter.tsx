@@ -18,7 +18,7 @@ export async function CategoryFilter() {
             className="rounded-sm bg-cyan-primary px-3 py-2 text-sm text-white transition-colors hover:bg-cyan-primary/80"
             scroll={false}
           >
-            <Text color="white">{category.name}</Text>
+            <Text color="white" weight="bold">{category.name}</Text>
           </Link>
         ))}
         <Link
@@ -26,7 +26,7 @@ export async function CategoryFilter() {
           className="rounded-sm bg-cyan-primary px-3 py-2 text-sm text-white transition-colors hover:bg-cyan-primary/80"
           scroll={false}
         >
-          <Text color="white">Todas categorias</Text>
+          <Text color="white" weight="bold">Todas categorias</Text>
         </Link>
       </div>
     </div>
