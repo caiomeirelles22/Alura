@@ -7,6 +7,7 @@ interface GetPostsParams {
   category?: string;
   page?: number;
   limit?: number;
+  revalidate?: number;
 }
 
 export async function getAllPosts({
@@ -14,6 +15,7 @@ export async function getAllPosts({
   category,
   page = 1,
   limit = 6,
+  revalidate,
 }: GetPostsParams): Promise<{ posts: Post[]; totalCount: number }> {
   try {
     const totalPagesInApi = 5;
@@ -22,8 +24,13 @@ export async function getAllPosts({
       (_, i) => i + 1
     );
 
-    const fetchPromises = pageNumbers.map((pageNum) =>
-      fetch(`${API_URL}/posts?limit=9&page=${pageNum}`, { cache: "no-store" })
+    const fetchOptions: RequestInit = revalidate
+      ? { next: { revalidate } }
+      : { cache: "no-store" };
+
+    const fetchPromises = pageNumbers.map(
+      (pageNum) =>
+        fetch(`${API_URL}/posts?limit=9&page=${pageNum}`, fetchOptions)
     );
 
     const responses = await Promise.all(fetchPromises);

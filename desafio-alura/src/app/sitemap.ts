@@ -8,7 +8,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     throw new Error('A variável de ambiente NEXT_PUBLIC_SITE_URL não está definida.');
   }
 
-  const { posts } = await getAllPosts({ limit: 1000 }); 
+  const { posts } = await getAllPosts({ limit: 1000, revalidate: 3600 }); 
 
   const postUrls = posts.map((post) => ({
     url: `${baseUrl}/posts/${post.id}`,
