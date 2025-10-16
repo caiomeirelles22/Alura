@@ -8,7 +8,7 @@ interface PostHeaderProps {
 
 export function PostHeader({ post }: PostHeaderProps) {
   return (
-    <article className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-4 lg:gap-12">
+    <article className="flex flex-col lg:pt-24 lg:flex-row items-center lg:items-start justify-between gap-4 lg:gap-12">
       <div className="flex flex-col gap-6 w-full lg:w-auto order-2 lg:order-1 items-center lg:items-start">
         <Text
           as="h1"
