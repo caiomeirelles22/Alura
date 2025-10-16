@@ -22,7 +22,7 @@ export default async function Home({ searchParams }: HomeProps) {
 
   return (
     <div>
-      <div className="flex flex-col items-center w-full justify-between pb-28">
+      <div className="flex justify-center w-full">
         <Author />
       </div>
       <PostFeed

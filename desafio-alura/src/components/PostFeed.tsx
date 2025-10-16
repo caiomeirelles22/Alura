@@ -15,10 +15,10 @@ interface PostFeedProps {
 
 export function PostFeed({ posts, totalPages, currentPage }: PostFeedProps) {
   return (
-    <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-12 py-10">
-      <div className="flex w-full items-start justify-between">
-        <div className="flex items-center gap-8">
-          <Text weight="bold" size="2xl" family="chakra">
+    <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-12 py-10 px-4 xl:px-0"> 
+      <div className="flex w-full items-start justify-center xl:justify-between flex-wrap gap-6 md:gap-4">
+        <div className="flex items-center gap-2 md:gap-8 flex-wrap">
+          <Text weight="bold" size="2xl" family="chakra" className='mx-auto'>
             Minhas postagens
           </Text>
           <Suspense fallback={<div className="h-10 w-80" />}>

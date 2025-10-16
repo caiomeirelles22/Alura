@@ -4,9 +4,9 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="border-t border-gray-200 bg-white">
-      <div className="mx-auto max-w-7xl px-8 py-12">
-        <div className="flex items-start justify-between">
+    <footer className="border-t border-gray-200 bg-white mt-auto">
+      <div className="mx-auto max-w-7xl px-4 py-12 md:px-8">
+        <div className="flex flex-col items-start justify-between gap-10 md:flex-row md:gap-4">
           <div className="flex flex-col gap-2">
             <Text color="primary" family="chakra" weight="bold" size="base">
               Vamos conversar?
@@ -17,6 +17,7 @@ export function Footer() {
               size="6xl"
               weight="bold"
               color="default"
+              className="text-2xl md:text-6xl"
             >
               Entre em contato
             </Text>
@@ -57,7 +58,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 mx-auto w-fit">
+        <div className="mt-12 text-center">
           <Text color="muted" className="text-sm">
             © Copyright 2025. Produzido por Fernanda Mascheti
           </Text>

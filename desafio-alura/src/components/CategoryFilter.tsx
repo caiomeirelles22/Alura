@@ -6,8 +6,8 @@ export async function CategoryFilter() {
   const categories = await getAllCategories();
 
   return (
-    <div className="flex items-start gap-4">
-      <Text family="inter" weight="bold">
+    <div className="flex flex-col flex-wrap items-start gap-4 lg:flex-row">
+      <Text family="inter" weight="bold" className="mx-auto">
         Categorias:
       </Text>
       <div className="flex gap-4  max-w-96 flex-wrap">

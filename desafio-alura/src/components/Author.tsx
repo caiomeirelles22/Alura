@@ -3,10 +3,10 @@ import { Text } from "./Text";
 
 export function Author() {
   return (
-    <div className="flex flex-col gap-6 max-w-[675px]">
+    <div className="flex flex-col gap-6 max-w-[675px] mx-4 md:pb-28">
       <Avatar />
       <div>
-        <Text family="chakra" weight="bold" size="6xl">
+        <Text family="chakra" weight="bold" className="text-xl md:text-6xl mx-auto w-fit">
           Eu ensino{" "}
           <span className="bg-gradient-to-r from-[#8C61D5] to-[#1CA7C8] bg-clip-text text-transparent">
             Programação

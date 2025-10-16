@@ -1,11 +1,10 @@
 export function Code() {
   return (
     <svg
-      width="46"
-      height="46"
       viewBox="0 0 46 46"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className="w-full h-full"
     >
       <path
         d="M30.6666 34.5L42.1666 23L30.6666 11.5"
@@ -22,5 +21,5 @@ export function Code() {
         strokeLinejoin="round"
       />
     </svg>
-  )
+  );
 }

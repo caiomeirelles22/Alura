@@ -31,7 +31,8 @@ export default function RootLayout({
         className={`${inter.variable} ${chakraPetch.variable} antialiased flex flex-col min-h-screen pt-[72px]`}
       >
         <Header />
-        <div className="flex-grow">{children}</div> <Footer />
+        <main className="flex-grow">{children}</main>
+        <Footer />
       </body>
     </html>
   );
