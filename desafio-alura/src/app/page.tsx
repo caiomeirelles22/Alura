@@ -1,7 +1,9 @@
 import { Author } from "@/components/Author";
 import { PostFeed } from "@/components/PostFeed";
-import { getAllPosts } from "@/services/posts";
+import { getAllPosts, getAllCategories } from "@/services/posts";
 import { Metadata } from "next";
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: "Fernanda Mascheti - Blog de Programação",
@@ -10,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Fernanda Mascheti - Blog de Programação",
     description: "Blog sobre desenvolvimento e tecnologia.",
-    url: process.env.API_URL,
+    url: process.env.NEXT_PUBLIC_SITE_URL,
     images: [
       {
         url: "/FernandaAvatar.jpg",
@@ -26,32 +28,42 @@ export const metadata: Metadata = {
 };
 
 interface HomeProps {
-  searchParams: Promise<{
+  searchParams: {
     q?: string;
     category?: string;
     page?: string;
-  }>;
+  };
 }
 
 export default async function Home({ searchParams }: HomeProps) {
   const { q, category, page } = await searchParams;
-
   const currentPage = Number(page) || 1;
-  const { posts, totalCount } = await getAllPosts({
-    query: q,
-    category: category,
-    page: currentPage,
-  });
+
+  const [
+    { posts, totalCount }, 
+    allCategories
+  ] = await Promise.all([
+    getAllPosts({
+      query: q,
+      category: category,
+      page: currentPage,
+    }),
+    getAllCategories()
+  ]);
+
+  const categoryName = allCategories.find(c => c.slug === category)?.name;
 
   return (
     <div>
-      <div className="flex justify-center w-full">
+      <div className="flex w-full justify-center">
         <Author />
       </div>
       <PostFeed
         posts={posts}
         totalPages={Math.ceil(totalCount / 6)}
         currentPage={currentPage}
+        selectedCategory={category}
+        categoryName={categoryName}
       />
     </div>
   );

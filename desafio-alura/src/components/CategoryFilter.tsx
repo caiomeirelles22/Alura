@@ -2,8 +2,16 @@ import { getAllCategories } from "@/services/posts";
 import Link from "next/link";
 import { Text } from "./Text";
 
-export async function CategoryFilter() {
+interface CategoryFilterProps {
+  selectedCategory?: string;
+}
+
+export async function CategoryFilter({ selectedCategory }: CategoryFilterProps) {
   const categories = await getAllCategories();
+
+  const baseStyle = "rounded-sm px-3 py-2 text-sm text-white transition-colors";
+  const defaultStyle = `${baseStyle} bg-cyan-primary hover:bg-cyan-primary/80`;
+  const activeStyle = `${baseStyle} bg-blue-dark`;
 
   return (
     <div className="flex flex-col flex-wrap items-start gap-4 lg:flex-row">
@@ -15,7 +23,9 @@ export async function CategoryFilter() {
           <Link
             key={category.slug}
             href={`/?category=${category.slug}`}
-            className="rounded-sm bg-cyan-primary px-3 py-2 text-sm text-white transition-colors hover:bg-cyan-primary/80"
+            className={
+              selectedCategory === category.slug ? activeStyle : defaultStyle
+            }
             scroll={false}
           >
             <Text color="white" weight="bold">{category.name}</Text>
@@ -23,7 +33,8 @@ export async function CategoryFilter() {
         ))}
         <Link
           href={`/`}
-          className="rounded-sm bg-cyan-primary px-3 py-2 text-sm text-white transition-colors hover:bg-cyan-primary/80"
+          
+          className={!selectedCategory ? activeStyle : defaultStyle}
           scroll={false}
         >
           <Text color="white" weight="bold">Todas categorias</Text>
