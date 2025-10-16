@@ -5,7 +5,7 @@ import { Text } from "./Text";
 export function Author() {
   return (
     <div className="relative flex flex-col items-center gap-6 max-w-[675px] mt-4 mx-4 md:pb-28">
-      <div className="absolute top-0 left-0 w-full h-full -z-10 opacity-50 blur-2xl">
+      <div className="absolute top-0 left-0 w-full h-full -z-10 opacity-30 blur-3xl">
         <GradientBackground />
       </div>
 
