@@ -1,5 +1,6 @@
-import { API_URL } from "@/ApiUrl";
 import { Category, Post } from "@/types";
+
+const API_URL = process.env.API_URL;
 
 interface GetPostsParams {
   query?: string;

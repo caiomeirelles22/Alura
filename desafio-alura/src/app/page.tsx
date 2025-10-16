@@ -1,6 +1,29 @@
 import { Author } from "@/components/Author";
 import { PostFeed } from "@/components/PostFeed";
 import { getAllPosts } from "@/services/posts";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Fernanda Mascheti - Blog de Programação",
+  description:
+    "Blog sobre desenvolvimento, pensamento computacional e tecnologia. Aprenda HTML, CSS, JavaScript e muito mais!",
+  openGraph: {
+    title: "Fernanda Mascheti - Blog de Programação",
+    description: "Blog sobre desenvolvimento e tecnologia.",
+    url: process.env.API_URL,
+    images: [
+      {
+        url: "/FernandaAvatar.jpg",
+        width: 800,
+        height: 600,
+        alt: "Avatar de Fernanda Mascheti",
+      },
+    ],
+  },
+  alternates: {
+    canonical: "/",
+  },
+};
 
 interface HomeProps {
   searchParams: Promise<{

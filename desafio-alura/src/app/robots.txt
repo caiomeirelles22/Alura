@@ -1,0 +1,26 @@
+import { MetadataRoute } from 'next';
+
+export default function robots(): MetadataRoute.Robots {
+  // ✅ Lê a URL do site diretamente do .env.local
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
+
+  // Verificação para garantir que a URL foi definida
+  if (!baseUrl) {
+    // Em um cenário real, você poderia lançar um erro ou retornar um valor padrão
+    return {
+      rules: {
+        userAgent: '*',
+        disallow: '/', // Bloqueia tudo se a URL base não estiver configurada
+      },
+    };
+  }
+ 
+  return {
+    rules: {
+      userAgent: '*',
+      allow: '/',
+      disallow: '/private/', // Exemplo de pasta que você não quer indexar
+    },
+    sitemap: `${baseUrl}/sitemap.xml`,
+  };
+}
