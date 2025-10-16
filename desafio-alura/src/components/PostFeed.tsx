@@ -1,54 +1,48 @@
-import React, { Suspense } from "react";
-import { CategoryFilter } from "./CategoryFilter";
-import { PostCard } from "./PostCard";
-import { SearchInput } from "./SearchInput";
-import { Text } from "./Text";
+import React, { Suspense } from 'react'
+import { PostCard } from './PostCard'
+import { SearchInput } from './SearchInput'
+import { Text } from './Text'
+import { Post } from '@/types'
+import { CategoryFilter } from './CategoryFilter'
+import { Pagination } from './Pagination'
 
-export function PostFeed() {
-  const posts = Array.from({ length: 6 }); 
-  const categories = ["IA", "Back-end", "Front-end"];
 
+interface PostFeedProps {
+  posts: Post[]
+  totalPages: number
+  currentPage: number
+}
+
+export function PostFeed({ posts, totalPages, currentPage }: PostFeedProps) {
   return (
-    <div className="flex w-full max-w-6xl mx-auto flex-col items-center gap-12 py-10">
-      <div className="flex w-full items-center justify-between">
+    <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-12 py-10">
+      <div className="flex w-full items-start justify-between">
         <div className="flex items-center gap-8">
           <Text weight="bold" size="2xl" family="chakra">
             Minhas postagens
           </Text>
-          <Suspense fallback={<div className="w-80 h-10" /> }>
+          <Suspense fallback={<div className="h-10 w-80" />}>
             <SearchInput />
           </Suspense>
         </div>
+        <Suspense fallback={<div className="h-8 w-72 animate-pulse rounded bg-gray-200" />}>
+          <CategoryFilter />
+        </Suspense>
+      </div>
 
-        <div className="flex items-center gap-4">
-          <Text family="inter" weight="bold">
-            Categorias:
-          </Text>
-          <div className="flex gap-4">
-            {categories.map((category) => (
-              <CategoryFilter key={category} />
-            ))}
-          </div>
+      {posts.length > 0 ? (
+        <div className="grid w-full grid-cols-1 gap-x-6 gap-y-8 md:grid-cols-2 lg:grid-cols-3">
+          {posts.map((post) => (
+            <PostCard key={post.id} post={post} />
+          ))}
         </div>
-      </div>
+      ) : (
+        <div className="flex h-40 items-center justify-center">
+          <Text color="muted">Nenhum post encontrado.</Text>
+        </div>
+      )}
 
-      <div className="grid w-full grid-cols-3 gap-x-6 gap-y-8">
-        {posts.map((_, index) => (
-          <PostCard key={index} />
-        ))}
-      </div>
-
-      <div className="flex items-center gap-2">
-        <button className="h-9 w-9 rounded bg-slate-800 text-white transition-colors hover:bg-slate-700">
-          1
-        </button>
-        <button className="h-9 w-9 rounded bg-slate-200 text-slate-600 transition-colors hover:bg-slate-300">
-          2
-        </button>
-        <button className="h-9 w-9 rounded bg-slate-200 text-slate-600 transition-colors hover:bg-slate-300">
-          3
-        </button>
-      </div>
+      <Pagination totalPages={totalPages} currentPage={currentPage} />
     </div>
-  );
+  )
 }
