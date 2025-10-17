@@ -22,7 +22,7 @@ export function PostFeed({
   selectedCategory,
 }: PostFeedProps) {
   return (
-    <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-12 py-10 px-4 xl:px-0">
+    <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-12 py-10 px-4 xl:px-0 md:pt-20">
       <div className="flex w-full items-start justify-center xl:justify-between flex-wrap gap-6 md:gap-4">
         <div className="flex items-center gap-2 md:gap-8 flex-wrap">
           <Text weight="bold" size="2xl" family="chakra" className="mx-auto">

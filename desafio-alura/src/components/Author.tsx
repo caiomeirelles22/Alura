@@ -1,14 +1,27 @@
+import { DetailTopLeft } from "@/icons/DetailTopLeft";
 import { Avatar } from "./Avatar";
 import { GradientBackground } from "./GradientBackground";
 import { Text } from "./Text";
+import { DetailBottom } from "@/icons/DetailBottom";
+import { DetailTopRight } from "@/icons/DetailTopRight";
 
 export function Author() {
   return (
-    <div className="relative flex flex-col items-center gap-6 max-w-[675px] mt-4 mx-4 md:pb-28">
+    <div className="relative flex flex-col items-center gap-6 max-w-[675px] mt-4 mx-4 md:pb-48">
       <div className="absolute top-0 left-0 w-full h-full -z-10 opacity-30 blur-3xl">
         <GradientBackground />
       </div>
-
+      <div className="hidden md:block">
+        <div className="absolute bottom-1 left-1 -translate-x-[150%] opacity-40 md:opacity-100">
+          <DetailTopLeft />
+        </div>
+        <div className="absolute bottom-1 left-1/2 -translate-x-1/2 opacity-40 md:opacity-100">
+          <DetailBottom />
+        </div>
+        <div className="absolute bottom-1 left-11/12 translate-x-11 opacity-40 md:opacity-100">
+          <DetailTopRight />
+        </div>
+      </div>
       <Avatar />
       <div>
         <Text

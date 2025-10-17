@@ -2,10 +2,12 @@ import { MailIcon } from "@/icons/MailIcon";
 import { Text } from "./Text";
 import Link from "next/link";
 import { Copyright } from "./Copyright";
+import { LinkedinIcon } from "@/icons/LinkedinIcon";
+import { Github } from "@/icons/Github";
 
 export function Footer() {
   return (
-    <footer >
+    <footer>
       <div className="mx-auto max-w-7xl px-4 py-12 md:px-8">
         <div className="flex flex-col items-start justify-between gap-10 md:flex-row md:gap-4">
           <div className="flex flex-col gap-2">
@@ -41,7 +43,7 @@ export function Footer() {
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-gray-900 hover:underline"
             >
-              <MailIcon className="h-5 w-5 text-cyan-500" />
+              <LinkedinIcon />
               <Text as={"span"} color="muted" family="inter">
                 /Fernanda Mascheti
               </Text>
@@ -52,7 +54,7 @@ export function Footer() {
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-gray-900 hover:underline"
             >
-              <MailIcon className="h-5 w-5 text-cyan-500" />
+              <Github />
               <Text as={"span"} color="muted" family="inter">
                 /fernandamascheti
               </Text>
@@ -60,7 +62,7 @@ export function Footer() {
           </div>
         </div>
 
-        <Copyright/>
+        <Copyright />
       </div>
     </footer>
   );
