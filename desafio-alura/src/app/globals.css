@@ -3,6 +3,10 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --muted: #6e859f;
+  --cyan-primary: #1ca7c8;
+  --blue-dark: #284260;
+  --card-border: rgba(0, 0, 0, 0.06);
 }
 
 @theme inline {
@@ -15,21 +19,36 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --muted: #9d9d9d;
+    --cyan-primary: #1ca7c8;
+    --blue-dark: #cfe7f5;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter); 
+  font-family: var(--font-inter);
+  transition: background-color 300ms ease, color 300ms ease;
 }
 @theme {
-  --color-cyan-primary: #1ca7c8;
-  --color-blue-dark: #284260;
-  --color-blue-muted: #6e859f;
+  --color-cyan-primary: var(--cyan-primary);
+  --color-blue-dark: var(--blue-dark);
+  --color-blue-muted: var(--muted);
   --color-purple-accent: #8c61d5;
   --color-gray-medium: #9d9d9d;
 
   --font-chakra: "Chakra Petch", sans-serif;
   --font-inter: "inter", "sans-serif";
+}
+
+/* class-based dark theme overrides (Tailwind dark: uses .dark on root) */
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --muted: #9d9d9d;
+  --cyan-primary: #1ca7c8;
+  --blue-dark: #cfe7f5;
+  /* Dark theme card border fixed to a dark blue */
+  --card-border: var(--color-blue-dark);
 }

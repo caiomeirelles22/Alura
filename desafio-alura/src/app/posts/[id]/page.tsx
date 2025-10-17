@@ -56,7 +56,7 @@ export async function generateMetadata(
 }
 
 export default async function PostPage({ params }: PostPageProps) {
-  const { id } = params;
+  const { id } = await params;
   const post = await getPostById(id);
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 

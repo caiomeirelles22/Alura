@@ -57,15 +57,15 @@ export function Pagination({ totalPages, currentPage }: PaginationProps) {
 
   const baseStyle =
     "flex h-9 w-9 items-center justify-center rounded-sm font-bold transition-colors";
-  const primaryStyle = "bg-blue-dark text-white";
-  const secondaryStyle = "border bg-gray-medium text-white hover:bg-blue-dark";
+  const hoverBgClass = "hover:bg-[var(--color-blue-dark)]";
   return (
     <nav className="flex items-center justify-center gap-2">
       {pages.map((page, index) =>
         typeof page === "string" ? (
           <span
             key={`ellipsis-${index}`}
-            className="flex h-9 w-9 items-center justify-center px-2 text-gray-500"
+            className="flex h-9 w-9 items-center justify-center px-2"
+            style={{ color: "var(--color-blue-muted)" }}
           >
             ...
           </span>
@@ -74,10 +74,20 @@ export function Pagination({ totalPages, currentPage }: PaginationProps) {
             key={page}
             href={createPageURL(page)}
             scroll={false}
-            className={`
-              ${baseStyle} 
-              ${currentPage === page ? primaryStyle : secondaryStyle}
-            `}
+            className={`${baseStyle} ${hoverBgClass}`}
+            style={
+              currentPage === page
+                ? {
+                    background: "var(--color-blue-dark)",
+                    color: "var(--background)",
+                  }
+                : {
+                    background: "var(--muted)",
+                    color: "var(--foreground)",
+                    border: "1px solid",
+                    borderColor: "var(--card-border)",
+                  }
+            }
           >
             {page}
           </Link>
